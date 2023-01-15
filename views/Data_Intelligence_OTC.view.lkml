@@ -122,7 +122,7 @@ view: data_intelligence_otc {
     value_format: "0.00"
     type: number
     #sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${delivered_value_Local_Currency},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},${Exchange_Rate_Type} ,${Local_Currency_Key},{% parameter Currency_Required %},${actual_delivery_date},${delivered_value_Local_Currency})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
-    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${blocked_order_value_Local_Currency},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${creation_date_date},${blocked_order_value_Local_Currency})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
+    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${blocked_order_value_Local_Currency},SAP_REPORTING.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${creation_date_date},${blocked_order_value_Local_Currency})),ifnull(CAST(SAP_REPORTING.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
   }
 
   dimension: blocked_order_quantity {
@@ -251,7 +251,7 @@ view: data_intelligence_otc {
     value_format: "0.00"
     type: number
     #sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${delivered_value_Local_Currency},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},${Exchange_Rate_Type} ,${Local_Currency_Key},{% parameter Currency_Required %},${actual_delivery_date},${delivered_value_Local_Currency})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
-    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${delivered_value_Local_Currency},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${actual_delivery_date},${delivered_value_Local_Currency})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
+    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${delivered_value_Local_Currency},SAP_REPORTING.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${actual_delivery_date},${delivered_value_Local_Currency})),ifnull(CAST(SAP_REPORTING.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
     }
 
   measure: sum_delivered_value {
@@ -388,7 +388,7 @@ view: data_intelligence_otc {
     value_format: "0.00"
     type: number
     #sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %}  ,${intercompany_price_Local_currency},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},${Exchange_Rate_Type} ,${Local_Currency_Key},{% parameter Currency_Required %},${billing_date},${intercompany_price_Local_currency})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
-    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %},${billing_Net_Value_Local_Currecy},@{FUNCTION_DATASET}.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${billing_date},${billing_Net_Value_Local_Currecy})),ifnull(CAST(@{FUNCTION_DATASET}.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
+    sql: Round(if(${Local_Currency_Key}={% parameter Currency_Required %},${billing_Net_Value_Local_Currecy},SAP_REPORTING.Currency_Conversion( ${Client_ID},'M',${Local_Currency_Key},{% parameter Currency_Required %},${billing_date},${billing_Net_Value_Local_Currecy})),ifnull(CAST(SAP_REPORTING.Currency_Decimal({% parameter Currency_Required %}) AS int),2)) ;;
   }
 
   dimension: in_full_delivery {

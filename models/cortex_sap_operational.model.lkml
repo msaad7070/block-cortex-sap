@@ -1,5 +1,5 @@
 # Define the database connection to be used for this model.
-connection: "@{CONNECTION_NAME}"
+connection: "cortex-looker-saad"
 
 # include all the views
 include: "/views/**/*.view"
@@ -32,7 +32,7 @@ named_value_format: Greek_Number_Format {
 }
 
 explore: data_intelligence_ar {
-sql_always_where: ${Client_ID} = "@{CLIENT}" ;;
+sql_always_where: ${Client_ID} = "800" ;;
 }
 
 explore: sales_orders {
